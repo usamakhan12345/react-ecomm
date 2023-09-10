@@ -15,18 +15,28 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import {FiShoppingCart} from "react-icons/fi"
+import { useNavigate } from 'react-router-dom';
 
 
 const drawerWidth = 240;
-const navItems = ['Home', 'About', 'Contact'];
-
+const navItems = ['Cart', 'About', 'Contact'];
 function DrawerAppBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const navigate = useNavigate()
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+  const pageChange = (item)=>{
+    console.log(item)
+      if(item === 'Cart'){
+        navigate("/cart")
+      }
+      else{
+        console.log("hleo")
+      }
+  }
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -79,7 +89,8 @@ function DrawerAppBar(props) {
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
+             
+            <Button onClick={()=> pageChange(item)} key={item} sx={{ color: '#fff' }}>
                 {item}
               </Button>
             ))}
@@ -88,6 +99,7 @@ function DrawerAppBar(props) {
       </AppBar>
       <nav>
         <Drawer
+          style={{color : "#e3821e", backgroundColor :  "#e3821e"}}
           container={container}
           variant="temporary"
           open={mobileOpen}
@@ -96,8 +108,8 @@ function DrawerAppBar(props) {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            display: { xs: 'block', sm: 'none', color : "#e3821e" },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth , color : "#ffff", backgroundColor :"#e3811e" ,fontWeight : 'bold' , fontSize : "30px"},
           }}
         >
           {drawer}

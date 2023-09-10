@@ -4,7 +4,9 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-import {useNavigate , NavLink} from "react"
+// import {useNavigate , NavLink} from "react"
+import HoverRating from "../Components/Star"
+
 
 export default function MultiActionAreaCard({title,image}) {
   return (
@@ -24,6 +26,7 @@ export default function MultiActionAreaCard({title,image}) {
           <Typography variant="body2" color="text.secondary">
             Lizards are a widespread group of squamate reptiles, with over 6,000
             species, ranging across all continents except Antarctica
+            <HoverRating className="mt-2"/>
           </Typography>
         </CardContent>
       </CardActionArea>
