@@ -15,29 +15,43 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import {FiShoppingCart} from "react-icons/fi"
+import {BiCartAdd} from "react-icons/bi"
 import { useNavigate } from 'react-router-dom';
-
+import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 
 const drawerWidth = 240;
-const navItems = ['Cart', 'About', 'Contact'];
 function DrawerAppBar(props) {
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [cartLenght,setCartLenght] = React.useState(9)
   const navigate = useNavigate()
 
+  const navItems = ['About', 'Contact','Login', <> <span style={{fontSize: 20 ,color: 'blue'}}>{cartLenght}</span><BiCartAdd  style={{fontSize:'42'}} /> </>];
+  const { window } = props;
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  
+ React.useEffect(()=>{
+  const CartLenth = ()=>{
+    const carts = JSON.parse(localStorage.getItem('cart'))
+    if(carts){
+
+      setCartLenght(8)
+    }
+  }
+  CartLenth()
+ })
+ console.log(cartLenght)
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-  const pageChange = (item)=>{
-    console.log(item)
-      if(item === 'Cart'){
-        navigate("/cart")
-      }
-      else{
-        console.log("hleo")
-      }
-  }
-
+ const pageChange = (item)=>{
+          console.log(item)  
+        if(item === 'About' || item === 'Contact' || item === 'Login'){
+        
+        }else{
+          navigate("/cart")
+        }
+ }
+ 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
@@ -50,6 +64,11 @@ function DrawerAppBar(props) {
             <ListItemButton sx={{ textAlign: 'center' }}>
               <ListItemText primary={item} />
             </ListItemButton>
+              <div>
+
+              </div>
+            <div>
+            </div>
           </ListItem>
         ))}
       </List>
@@ -61,7 +80,7 @@ function DrawerAppBar(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar component="nav" style={{backgroundColor : "#e3821e"}}>
+      <AppBar component="nav" style={{backgroundColor : "#EC407A"}}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -90,26 +109,30 @@ function DrawerAppBar(props) {
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
              
-            <Button onClick={()=> pageChange(item)} key={item} sx={{ color: '#fff' }}>
+            <Button style={{}} onClick={()=> pageChange(item)}  key={item} sx={{ color: '#fff' }}>
                 {item}
-              </Button>
+            </Button>
             ))}
           </Box>
+          {/* <Box>
+            <span className='fs-3' style={{marginLeft :15 , color:'blue',cursor:'pointer',fontWeight:'bold'}}>{cartLenght}</span>
+           <BiCartAdd style={{cursor: 'pointer'}} onClick={()=> navigate("/cart")} className='fs-1'/> 
+          </Box> */}
         </Toolbar>
       </AppBar>
       <nav>
         <Drawer
-          style={{color : "#e3821e", backgroundColor :  "#e3821e"}}
+          style={{color : "#e3821e", backgroundColor :  "#EC407A"}}
           container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true, 
           }}
           sx={{
-            display: { xs: 'block', sm: 'none', color : "#e3821e" },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth , color : "#ffff", backgroundColor :"#e3811e" ,fontWeight : 'bold' , fontSize : "30px"},
+            display: { xs: 'block', sm: 'none', color : "#EC407A" },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth , color : "#ffff", backgroundColor :"#EC407A" ,fontWeight : 'bold' , fontSize : "30px"},
           }}
         >
           {drawer}
@@ -126,10 +149,7 @@ function DrawerAppBar(props) {
 }
 
 DrawerAppBar.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
+ 
   window: PropTypes.func,
 };
 
