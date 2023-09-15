@@ -9,7 +9,7 @@ import axios from 'axios';
 import BasicModal from './BasicModal';
 
 
-export default function MultiActionAreaCard({viewDetails,setopen,title,image, price , rating , id}) {
+export default function MultiActionAreaCard({data , AddtoCart , viewDetails}) {
   const[productDetails, setProductDetails] = React.useState({})
   // const viewDetails = (id)=>{
   //   console.log(id)
@@ -19,43 +19,37 @@ export default function MultiActionAreaCard({viewDetails,setopen,title,image, pr
   //   .then(res => setProductDetails(res.data))
   //   .catch(err => console.log(err))
   //    }
-  const AddtoCart = (id)=>{
-      // console.log(id)
-      const cartData = JSON.parse(localStorage.getItem('cart') )|| []
-      cartData.push(id)
-        localStorage.setItem('cart',JSON.stringify(cartData))
-      
-  }
+  // console.log("data--->",data)
   return (
     <>
     <Card sx={{ width: 250, marginTop: 4 , height : 400 }}>
       <div>
         <img 
           style={{ width: "100%", height: 180, objectFit: "contain" }}
-          src={image}
+          src={data.image}
           alt=""
         />
       </div>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Rs {price}
+          Rs {data.price}
         </Typography>
         <Typography gutterBottom variant="h6" component="div">
-          {title.slice(0, 28)}...
+          {data.title.slice(0, 28)}...
         </Typography>
          <ReactStars
           edit={false}
-          value={rating.rate}
+          value={data.rating.rate}
           count={5}
           size={18}
           color2={"#ffd700"}
    /> 
       </CardContent>
       <CardActions className='d-flex justify-content-between btns-container'> 
-        <Button onClick={()=>AddtoCart(id)} size="small" color="primary" className='cart-btn'>
+        <Button onClick={()=>AddtoCart(data)} size="small" color="primary" className='cart-btn'>
             Add to Cart
         </Button>
-        <Button onClick={()=> viewDetails(id)} size="small" color="primary"  className='details-btn'>
+        <Button onClick={()=> viewDetails(data.id)} size="small" color="primary"  className='details-btn'>
             View Details
         </Button>
       </CardActions>

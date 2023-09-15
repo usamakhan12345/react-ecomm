@@ -11,6 +11,8 @@ import BasicModal from "../Components/BasicModal";
 import Dropdown from "../Components/Dropdown";
 import { useContext } from "react";
 import { Category } from "../Context";
+import TemporaryDrawer from "../Components/Drawer";
+
 const Home = () => {
   const [data, setdata] = useState([]);
   const [page, setPage] = useState(1);
@@ -20,39 +22,85 @@ const Home = () => {
   const [open, setOpen] = useState(false);
   const [productDetails, setProductDetails] = useState({});
   const { category, setCategory } = useContext(Category);
+  const [cartLenght, setCartLenght] = useState();
+  const [storageData, setStorageData] = useState([]);
+
+  const QuantityLess = (id) => {
+    const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+    const idIndex = cartData.findIndex((obj) => obj.id == id);
+    if (idIndex !== -1) {
+      cartData[idIndex].qty--;
+      localStorage.setItem("cart", JSON.stringify(cartData));
+    }
+  };
+
+  const Quantity = (id) => {
+    const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+    const idIndex = cartData.findIndex((obj) => obj.id == id);
+    if (idIndex !== -1) {
+      cartData[idIndex].qty++;
+      localStorage.setItem("cart", JSON.stringify(cartData));
+    }
+  };
+
+  useEffect(() => {
+    const cartdata = JSON.parse(localStorage.getItem("cart"));
+    if (cartdata) {
+      setStorageData(cartdata);
+      setCartLenght(cartdata.length);
+    }
+  }, [cartLenght, QuantityLess]);
 
   useEffect(() => {
     const dataFetch = () => {
       if (!category) {
-        console.log(category)
+        console.log(category);
         axios(`https://fakestoreapi.com/products?limit=${datalimit}`)
           .then((res) => {
             setdata(res.data);
-            console.log(res.data)
+            console.log(res.data);
             // <CircularIndeterminate display={loaderDisplay}/>
             setLoaderDisplay("none");
             setPagination(true);
           })
 
           .catch((err) => console.log(err));
-      } 
-      else {
-        console.log(category)
+      } else {
         axios(`https://fakestoreapi.com/products/category/${category}`)
           .then((res) => {
             setdata(res.data);
             setLoaderDisplay("none");
             setPagination(true);
-
           })
 
           .catch((err) => console.log(err));
       }
     };
     dataFetch();
-  },[category,datalimit]);
+  }, [category, datalimit]);
 
-  // console.log(data)
+  const AddtoCart = (data) => {
+    const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+    const idIndex = cartData.findIndex((obj) => obj.id == data.id);
+    if (idIndex !== -1) {
+      cartData[idIndex].qty++;
+      localStorage.setItem("cart", JSON.stringify(cartData));
+    } else {
+      cartData.push({ ...data, qty: 1 });
+    }
+    localStorage.setItem("cart", JSON.stringify(cartData));
+    setCartLenght(cartData.length);
+  };
+  const deleteCart = (id) => {
+    const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+    const idIndex = cartData.findIndex((obj) => obj.id == id);
+    if (idIndex !== -1) {
+      cartData.splice(idIndex, 1);
+      localStorage.setItem("cart", JSON.stringify(cartData));
+      setCartLenght(cartData.length);
+    }
+  };
+
   const handleChange = (event, value) => {
     console.log(value);
     setPage(value);
@@ -63,17 +111,24 @@ const Home = () => {
       setDataLimit(12);
     }
   };
-  const viewDetails = (id) => {
-    console.log("id--->", id);
 
+  const viewDetails = (id) => {
     axios(`https://fakestoreapi.com/products/${id}`)
       .then((res) => setProductDetails(res.data))
       .catch((err) => console.log(err));
     setOpen(true);
   };
+
   return (
     <>
-      <Appbar />
+      <Appbar
+        QuantityLess={QuantityLess}
+        Quantity={Quantity}
+        deleteCart={deleteCart}
+        storageData={storageData}
+        cartLenght={cartLenght}
+      />
+      {/* <TemporaryDrawer/> */}
       <Dropdown />
       <BasicModal
         productDetails={productDetails}
@@ -96,14 +151,10 @@ const Home = () => {
         {data.map((v, i) => (
           <div key={i} className="mb-2">
             <MultiActionAreaCard
+              AddtoCart={AddtoCart}
               viewDetails={viewDetails}
               setopen={setOpen}
-              key={i}
-              title={v.title.slice(0, 20) + "..."}
-              image={v.image}
-              price={v.price}
-              rating={v.rating}
-              id={v.id}
+              data={v}
             />
           </div>
         ))}

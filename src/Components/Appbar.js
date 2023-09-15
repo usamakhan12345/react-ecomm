@@ -17,40 +17,47 @@ import Button from '@mui/material/Button';
 import {FiShoppingCart} from "react-icons/fi"
 import {BiCartAdd} from "react-icons/bi"
 import { useNavigate } from 'react-router-dom';
+import Badge from '@mui/material/Badge';
+
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
+import TemporaryDrawer from './Drawer';
 
 const drawerWidth = 240;
 function DrawerAppBar(props) {
-  const [cartLenght,setCartLenght] = React.useState(9)
+  const[open,setOpen] = React.useState(false)
+  // const [cartLenght,setCartLenght] = React.useState()
   const navigate = useNavigate()
-
-  const navItems = ['About', 'Contact','Login', <> <span style={{fontSize: 20 ,color: 'blue'}}>{cartLenght}</span><BiCartAdd  style={{fontSize:'42'}} /> </>];
+  // console.log(props.cartLenght)
+  // console.log(props.storageData)
+      const navItems = ['About', 'Contact','Login', <>  <Badge className='mt-1' badgeContent={props.cartLenght} color="primary"> <BiCartAdd onClick={()=>setOpen(true)}  style={{fontSize:'42'}} /> </Badge>  </>];
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [cartDrawer, setcartDrawer] = React.useState(false);
+
 
   
- React.useEffect(()=>{
-  const CartLenth = ()=>{
-    const carts = JSON.parse(localStorage.getItem('cart'))
-    if(carts){
+//  React.useEffect(()=>{
+//   const CartLenth = ()=>{
+//     const carts = JSON.parse(localStorage.getItem('cart'))
+//     if(carts){
 
-      setCartLenght(8)
-    }
-  }
-  CartLenth()
- })
- console.log(cartLenght)
+//       setCartLenght(carts.length)
+//     }
+//   }
+//   CartLenth()
+//  })
+//  console.log(cartLenght)
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
- const pageChange = (item)=>{
-          console.log(item)  
-        if(item === 'About' || item === 'Contact' || item === 'Login'){
+//  const pageChange = (item)=>{
+//           console.log(item)  
+//         if(item === 'About' || item === 'Contact' || item === 'Login'){
         
-        }else{
-          navigate("/cart")
-        }
- }
+//         }else{
+//           navigate("/cart")
+//         }
+//  }
  
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -109,17 +116,18 @@ function DrawerAppBar(props) {
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
              
-            <Button style={{}} onClick={()=> pageChange(item)}  key={item} sx={{ color: '#fff' }}>
+            <Button style={{}}  key={item} sx={{ color: '#fff' }}>
                 {item}
             </Button>
             ))}
-          </Box>
+           </Box>
           {/* <Box>
-            <span className='fs-3' style={{marginLeft :15 , color:'blue',cursor:'pointer',fontWeight:'bold'}}>{cartLenght}</span>
+            <span className='fs-3' style={{marginLeft :15 , color:'blue',cursor:'pointer',fontWeight:'bold'}}>{"cartLenght"}</span>
            <BiCartAdd style={{cursor: 'pointer'}} onClick={()=> navigate("/cart")} className='fs-1'/> 
-          </Box> */}
+          </Box>  */}
         </Toolbar>
       </AppBar>
+          <TemporaryDrawer QuantityLess = {props.QuantityLess} Quantity={props.Quantity} deleteCart={props.deleteCart} storageData = {props.storageData} open={open} setOpen = {setOpen}/>
       <nav>
         <Drawer
           style={{color : "#e3821e", backgroundColor :  "#EC407A"}}

@@ -58,3 +58,29 @@
     font-weight: bold;
     /* background-color: #e9cfd7; */
 }
+.drawerImage{
+    height: 40px !important;
+    width: 50px !important;
+    object-fit: 'contain' !important;
+}
+.drawerImageBox{
+    margin-right: 15px !important;
+    padding: 5 !important;
+}
+.deleteicon{
+    position: 'absolute' !important;
+    right: 20 !important;
+    font-size: 25px !important;
+    color: red;
+    cursor: pointer;
+}
+.qty-icon{
+    font-size: 25px  !important;
+    cursor:pointer;
+}
+.delete-icon{
+    margin-left: 60px !important;
+}
+.qty-icon:active{
+    opacity: 0.7;
+}
