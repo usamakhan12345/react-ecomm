@@ -10,6 +10,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: '100%',
+  
   height : 350 ,
   bgcolor: 'background.paper',
   border: '2px solid #000',
@@ -29,7 +30,7 @@ export default function BasicModal({handleClose,open , productDetails}) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box className= "modal-box" sx={style}>
         <MediaControlCard productDetails={productDetails}/>
         </Box>
       </Modal>

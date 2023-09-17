@@ -6,6 +6,11 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { TotalPrice } from "../Context/CartLenght";
 
 import "./index.css";
 import ReactStars from "react-stars";
@@ -14,6 +19,7 @@ import {
   AiOutlinePlusCircle,
   AiOutlineMinusCircle,
 } from "react-icons/ai";
+import { Navigate } from "react-router-dom";
 
 export default function AlignItemsList({
   storageData,
@@ -21,11 +27,18 @@ export default function AlignItemsList({
   Quantity,
   QuantityLess,
 }) {
-  const totalPrice = storageData.reduce((a,b)=>{
-    return  a + parseInt(b.price)
+  const navigate = useNavigate()
+  const [totalPrice,setTotalPrice] = React.useState(0)
+  const {setPrice} = useContext(TotalPrice)
+  setPrice(totalPrice)
+React.useEffect(()=>{
+  const totalCartPrice = storageData.reduce((a,b)=>{
+    return  a + (b.price) * parseInt(b.qty)
 
-  })
-  console.log(totalPrice)
+  },0)
+  setTotalPrice(Math.floor(totalCartPrice))
+  localStorage.setItem('totalamount',JSON.stringify(Math.floor(totalCartPrice)))
+})
   return (
     <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
       {storageData.map((v, i) => (
@@ -55,6 +68,7 @@ export default function AlignItemsList({
                   Rs {Math.round(v.price * v.qty)}/-
                 </Typography>
                 <Typography>
+                  {/* {console.log(v.rating.rate)} */}
                   <ReactStars
                     edit={false}
                     value={v.rating.rate}
@@ -83,8 +97,9 @@ export default function AlignItemsList({
           />
         </ListItem>
       ))}
-      <h5>Total Price :{}</h5>
-      {storageData && <button className="btn w-100 bg-success text-light fw-bold px-5">Check Out</button> } 
+     {storageData.length ? <h5 className="fw-bold mx-5 mt-4 mb-2">Total Price :{totalPrice}</h5> : ""}
+      {storageData.length ? <button onClick={()=> navigate('./checkout')} className="btn w-100 bg-success text-light fw-bold px-5">Check Out</button> :   <Alert severity="error" className="fw-bold emptyCartAlert">Cart Empty!</Alert>
+      } 
     </List>
   );
 }

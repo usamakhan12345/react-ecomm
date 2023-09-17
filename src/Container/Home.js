@@ -38,7 +38,11 @@ const Home = () => {
     const cartData = JSON.parse(localStorage.getItem("cart")) || [];
     const idIndex = cartData.findIndex((obj) => obj.id == id);
     if (idIndex !== -1) {
-      cartData[idIndex].qty++;
+        // cartData.splice(idIndex,1,...cartData[idIndex])
+        cartData[idIndex].qty++;
+        // cartData[idIndex].price = (parseInt(cartData[idIndex].price) * parseInt(cartData[idIndex].qty))
+        // console.log(cartData[idIndex].price)
+
       localStorage.setItem("cart", JSON.stringify(cartData));
     }
   };
@@ -54,11 +58,9 @@ const Home = () => {
   useEffect(() => {
     const dataFetch = () => {
       if (!category) {
-        console.log(category);
         axios(`https://fakestoreapi.com/products?limit=${datalimit}`)
           .then((res) => {
             setdata(res.data);
-            console.log(res.data);
             // <CircularIndeterminate display={loaderDisplay}/>
             setLoaderDisplay("none");
             setPagination(true);
@@ -102,7 +104,6 @@ const Home = () => {
   };
 
   const handleChange = (event, value) => {
-    console.log(value);
     setPage(value);
     if (value === 1) {
       setDataLimit(8);

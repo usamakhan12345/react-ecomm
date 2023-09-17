@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Button, CardActions } from '@mui/material';
 import ReactStars from "react-stars";
-  import "./index.css"
+import "./index.css"
 import axios from 'axios';
 import BasicModal from './BasicModal';
 
@@ -46,6 +46,8 @@ export default function MultiActionAreaCard({data , AddtoCart , viewDetails}) {
    /> 
       </CardContent>
       <CardActions className='d-flex justify-content-between btns-container'> 
+
+
         <Button onClick={()=>AddtoCart(data)} size="small" color="primary" className='cart-btn'>
             Add to Cart
         </Button>

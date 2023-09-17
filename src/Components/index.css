@@ -16,12 +16,9 @@
 
 }
 .btns-container{
-    position: relative !important;
+    position: absolute !important;
 }
-.cart-btn , .details-btn{
-    position: relative;
-    top: '2px';
-}
+
 .media-control-card{
     padding: 0px;
 }
@@ -37,6 +34,10 @@
     margin-right: 20px;
     font-size: 22px;
     font-weight: bold;
+}
+.cart-btn{
+    position: relative !important;
+    bottom: 1px !important;
 }
 #search-btn{
     background-color: #EC407A!important;
@@ -79,8 +80,18 @@
     cursor:pointer;
 }
 .delete-icon{
-    margin-left: 60px !important;
+    margin-left: 20x !important;
 }
 .qty-icon:active{
     opacity: 0.7;
+}
+.modal-box{
+    overflow-y: scroll!important;
+
+}
+.emptyCartAlert{
+    /* padding: 10px !important; */
+    padding: 10px 30px !important;
+    margin: 40px !important;
+    margin-top: 40px !important;
 }

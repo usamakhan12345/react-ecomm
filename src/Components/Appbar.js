@@ -24,11 +24,11 @@ import TemporaryDrawer from './Drawer';
 
 const drawerWidth = 240;
 function DrawerAppBar(props) {
+
   const[open,setOpen] = React.useState(false)
   // const [cartLenght,setCartLenght] = React.useState()
   const navigate = useNavigate()
   // console.log(props.cartLenght)
-  // console.log(props.storageData)
       const navItems = ['About', 'Contact','Login', <>  <Badge className='mt-1' badgeContent={props.cartLenght} color="primary"> <BiCartAdd onClick={()=>setOpen(true)}  style={{fontSize:'42'}} /> </Badge>  </>];
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -62,7 +62,7 @@ function DrawerAppBar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+        Smit Store
       </Typography>
       <Divider />
       <List>
