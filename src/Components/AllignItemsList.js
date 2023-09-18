@@ -98,7 +98,7 @@ React.useEffect(()=>{
         </ListItem>
       ))}
      {storageData.length ? <h5 className="fw-bold mx-5 mt-4 mb-2">Total Price :{totalPrice}</h5> : ""}
-      {storageData.length ? <button onClick={()=> navigate('./checkout')} className="btn w-100 bg-success text-light fw-bold px-5">Check Out</button> :   <Alert severity="error" className="fw-bold emptyCartAlert">Cart Empty!</Alert>
+      {storageData.length ? <button Quantity={Quantity} deleteCart={deleteCart} QuantityLess={QuantityLess} onClick={()=> navigate('./checkout') } className="btn w-100 bg-success text-light fw-bold px-5">Check Out</button> :   <Alert severity="error" className="fw-bold emptyCartAlert">Cart Empty!</Alert>
       } 
     </List>
   );

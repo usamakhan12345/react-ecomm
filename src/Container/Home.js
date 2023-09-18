@@ -12,6 +12,7 @@ import Dropdown from "../Components/Dropdown";
 import { useContext } from "react";
 import { Category } from "../Context";
 import TemporaryDrawer from "../Components/Drawer";
+import CheckOut from "./CheckOut";
 
 const Home = () => {
   const [data, setdata] = useState([]);

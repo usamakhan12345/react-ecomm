@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import "./Container.css";
 import Appbar from "../Components/Appbar";
+import axios from 'axios'
 
 const CheckOut = () => {
 
@@ -10,12 +11,15 @@ const CheckOut = () => {
   const [email ,setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [amount, setAmount] = useState(0)
-
+ const [storageData,setstorageData] = useState([])
+ const [cartLenght,setcartLenght] = useState(0)
 
   useEffect(()=>{
+    const carts = JSON.parse(localStorage.getItem('cart'))
+    setstorageData(carts)
+    setcartLenght(carts.length)
     const totalAMount = JSON.parse(localStorage.getItem('totalamount'))
-  console.log(totalAMount)
-  setAmount(totalAMount) 
+   setAmount(totalAMount) 
 
   })
   const orderdetails = ()=>{
@@ -27,22 +31,40 @@ const CheckOut = () => {
     amount,
     carts
   }
-  console.log(userOrderDetails)
+  axios.post('http://localhost:8000/placeorder',{
+    userOrderDetails
+  })
+  .then((res) => {
+    console.log(res.data)
+    setName("")
+    setEmail("")
+    setPhone("")
+    setAmount("")
+    localStorage.clear()
+  })
+
+  .catch(err => console.log(err))
+
+ 
   }
   return (
     <>
-      <Appbar/>
+    <Appbar
+        storageData={storageData}
+        cartLenght={cartLenght}
+      />
       <h4 className="main-head">CheckOut</h4>
       <div className="container mt-5">
         <div className="row ">
           <div className="col-12">
             <div className="d-flex align-items-between justify-content-around mt-5 flex-wrap">
-              <TextField label="Name" onChange={(e)=> setName(e.target.value)} className="text-field"  />
+              <TextField value={name} label="Name" onChange={(e)=> setName(e.target.value)} className="text-field"  />
 
               <TextField
                 label="Email"
                 variant="outlined"
                 className="text-field"
+                value={email}
                 onChange={(e)=> setEmail(e.target.value)}
               />
             </div>
@@ -57,6 +79,7 @@ const CheckOut = () => {
                 label="Phone"
                 variant="outlined"
                 className="text-field"
+                value={phone}
                 onChange={(e)=> setPhone(e.target.value)}
               />
 
