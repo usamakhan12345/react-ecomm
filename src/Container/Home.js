@@ -12,9 +12,8 @@ import Dropdown from "../Components/Dropdown";
 import { useContext } from "react";
 import { Category } from "../Context";
 import TemporaryDrawer from "../Components/Drawer";
-import CheckOut from "./CheckOut";
 
-const Home = () => {
+ const Home = () => {
   const [data, setdata] = useState([]);
   const [page, setPage] = useState(1);
   const [datalimit, setDataLimit] = useState(8);
@@ -26,7 +25,7 @@ const Home = () => {
   const [cartLenght, setCartLenght] = useState();
   const [storageData, setStorageData] = useState([]);
 
-  const QuantityLess = (id) => {
+    const  QuantityLess = (id) => {
     const cartData = JSON.parse(localStorage.getItem("cart")) || [];
     const idIndex = cartData.findIndex((obj) => obj.id == id);
     if (idIndex !== -1) {
@@ -35,7 +34,7 @@ const Home = () => {
     }
   };
 
-  const Quantity = (id) => {
+   const Quantity = (id) => {
     const cartData = JSON.parse(localStorage.getItem("cart")) || [];
     const idIndex = cartData.findIndex((obj) => obj.id == id);
     if (idIndex !== -1) {
@@ -130,7 +129,7 @@ const Home = () => {
         storageData={storageData}
         cartLenght={cartLenght}
       />
-      {/* <TemporaryDrawer/> */}
+      <TemporaryDrawer/>
       <Dropdown />
       <BasicModal
         productDetails={productDetails}

@@ -19,22 +19,30 @@ import {BiCartAdd} from "react-icons/bi"
 import { useNavigate } from 'react-router-dom';
 import Badge from '@mui/material/Badge';
 
-import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
+// import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import TemporaryDrawer from './Drawer';
+// import { CheckBoxOutlineBlank } from '@mui/icons-material';
 
 const drawerWidth = 240;
 function DrawerAppBar(props) {
-
+  const navigate = useNavigate()
   const[open,setOpen] = React.useState(false)
   // const [cartLenght,setCartLenght] = React.useState()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   // console.log(props.cartLenght)
-      const navItems = ['About', 'Contact','Login', <>  <Badge className='mt-1' badgeContent={props.cartLenght} color="primary"> <BiCartAdd onClick={()=>setOpen(true)}  style={{fontSize:'42'}} /> </Badge>  </>];
+      const navItems = ['Home', 'Contact','Login', <>  <Badge className='mt-1' badgeContent={props.cartLenght} color="primary"> <BiCartAdd onClick={()=>setOpen(true)}  style={{fontSize:'42'}} /> </Badge>  </>];
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [cartDrawer, setcartDrawer] = React.useState(false);
+  // const [cartDrawer, setcartDrawer] = React.useState(false);
 
-
+const Check = (item)=>{
+  if(item === 'Login'){
+    navigate("/login")
+  }
+  if(item === 'Home'){
+    navigate("/")
+  }
+}
   
 //  React.useEffect(()=>{
 //   const CartLenth = ()=>{
@@ -50,14 +58,7 @@ function DrawerAppBar(props) {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-//  const pageChange = (item)=>{
-//           console.log(item)  
-//         if(item === 'About' || item === 'Contact' || item === 'Login'){
-        
-//         }else{
-//           navigate("/cart")
-//         }
-//  }
+
  
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -70,8 +71,9 @@ function DrawerAppBar(props) {
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+            
+            <ListItemButton onClick={()=>Check(item)}  sx={{ textAlign: 'center' }}>
+              <ListItemText  primary={item} />
             </ListItemButton>
               <div>
 
@@ -118,7 +120,8 @@ function DrawerAppBar(props) {
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
              
-            <Button style={{}}  key={item} sx={{ color: '#fff' }}>
+            <Button onClick={()=>Check(item)}  style={{}}  key={item} sx={{ color: '#fff' }}>
+            
                 {item}
             </Button>
             ))}

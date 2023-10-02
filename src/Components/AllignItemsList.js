@@ -40,7 +40,7 @@ React.useEffect(()=>{
   localStorage.setItem('totalamount',JSON.stringify(Math.floor(totalCartPrice)))
 })
   return (
-    <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+    <List sx={{ width: "100%", maxWidth:  300, bgcolor: "background.paper" }}>
       {storageData.map((v, i) => (
         <ListItem alignItems="flex-start" style={{ position: "relative" }}>
           <div className="drawerImageBox">
@@ -50,11 +50,12 @@ React.useEffect(()=>{
           <Typography
             onClick={() => deleteCart(v.id)}
             className="deleteicon"
-            style={{ position: "absolute", right: 10 }}
+            style={{ position: "absolute", right: '4px' }}
           >
             <AiFillDelete  className="delete-icon"/>
           </Typography>
          <ListItemText
+            className="mx-1"
             primary={v.title}
             secondary={
               <React.Fragment>
@@ -65,13 +66,13 @@ React.useEffect(()=>{
                   color="text.primary"
                   className="fs-6 py-2 fw-bold"
                 >
-                  Rs {Math.round(v.price * v.qty)}/-
+                  Rs {Math.floor(v.price * v.qty)}/-
                 </Typography>
                 <Typography>
                   {/* {console.log(v.rating.rate)} */}
                   <ReactStars
                     edit={false}
-                    value={v.rating.rate}
+                    // value={v.rating.rate}
                     count={5}
                     size={18}
                     color2={"#ffd700"}
@@ -98,7 +99,7 @@ React.useEffect(()=>{
         </ListItem>
       ))}
      {storageData.length ? <h5 className="fw-bold mx-5 mt-4 mb-2">Total Price :{totalPrice}</h5> : ""}
-      {storageData.length ? <button Quantity={Quantity} deleteCart={deleteCart} QuantityLess={QuantityLess} onClick={()=> navigate('./checkout') } className="btn w-100 bg-success text-light fw-bold px-5">Check Out</button> :   <Alert severity="error" className="fw-bold emptyCartAlert">Cart Empty!</Alert>
+      {storageData.length ? <button Quantity={Quantity} deleteCart={deleteCart} QuantityLess={QuantityLess} onClick={()=> navigate('./checkout') } className="btn w-100 bg-success text-light fw-bold px-5"> CheckOut </button> :   <Alert severity="error" className="fw-bold emptyCartAlert">Cart Empty!</Alert>
       } 
     </List>
   );

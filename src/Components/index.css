@@ -61,12 +61,14 @@
 }
 .drawerImage{
     height: 40px !important;
-    width: 50px !important;
+    width: 40px !important;
+    padding-right: 2px !important;
     object-fit: 'contain' !important;
 }
 .drawerImageBox{
-    margin-right: 15px !important;
+    margin-right: 2px !important;
     padding: 5 !important;
+    margin-left: 0px !important;
 }
 .deleteicon{
     position: 'absolute' !important;

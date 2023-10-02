@@ -49,3 +49,54 @@
   .main-head{
     margin-top: 40px;
   }
+.login{
+  color: #EC407A ;
+}
+.login-input{
+  width: 50%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  height: 50px;
+  padding-left: 20px;
+  border: none;
+  border-bottom: 2px solid #EC407A ;
+  outline: none;
+
+}
+.login-input:focus{
+  border: none;
+  border-bottom: 2px solid #EC407A ;
+}
+.login-icon{
+  font-size: 40px;
+  align-items: center;
+  align-content: center;
+  /* margin-top: 10px;
+  margin-bottom: 20px;*/
+   padding: 2px 20px; 
+   color: #EC407A;
+}
+.login-btn{
+  background-color: #EC407A;
+  color: whitesmoke;
+  font-weight: bold;
+  border: #EC407A;
+  width: 90px;
+  padding: 5px 10px;
+  height: 40px;
+  font-size: 20px;
+  margin-top: 20px;
+}
+.login-text{
+  color: #EC407A;
+}
+.signup-btn{
+  color: #EC407A;
+
+  font-weight: bold;
+  border: #EC407A;
+  padding: 5px 10px;
+  height: 30px;
+  margin-top: 20px;
+
+}

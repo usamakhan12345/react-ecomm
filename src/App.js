@@ -8,6 +8,8 @@ import TemporaryDrawer from "./Components/Drawer"
 import CheckOut from "./Container/CheckOut"
 import { TotalPrice } from "./Context/CartLenght"
 import DrawerAppBar from "./Components/Appbar"
+import Login from "./Container/Login"
+import SignUp from "./Container/SignUp"
 
 const App = () => {
   const [category,setCategory] = useState("")
@@ -28,6 +30,10 @@ const App = () => {
         <Route path ="/"  element = {<Home/>}/>
         <Route path ="/cart"   element = {<TemporaryDrawer/>}/>
         <Route path ="/checkout"   element = {<CheckOut/>}/>
+        <Route path ="/login"   element = {<Login/>}/>
+        <Route path ="/signup"   element = {<SignUp/>}/>
+
+
 
         </Routes>
         </TotalPrice.Provider>

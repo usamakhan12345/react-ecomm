@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import "./Container.css";
 import Appbar from "../Components/Appbar";
-import axios from 'axios'
+import axios from 'axios';
 
 const CheckOut = () => {
 
@@ -14,6 +14,7 @@ const CheckOut = () => {
  const [storageData,setstorageData] = useState([])
  const [cartLenght,setcartLenght] = useState(0)
 
+
   useEffect(()=>{
     const carts = JSON.parse(localStorage.getItem('cart'))
     setstorageData(carts)
@@ -22,6 +23,40 @@ const CheckOut = () => {
    setAmount(totalAMount) 
 
   })
+      
+  const deleteCart = (id) => {
+    const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+    const idIndex = cartData.findIndex((obj) => obj.id == id);
+    if (idIndex !== -1) {
+      cartData.splice(idIndex, 1);
+      localStorage.setItem("cart", JSON.stringify(cartData));
+      setcartLenght(cartData.length);
+    }
+  };
+
+  const  QuantityLess = (id) => {
+    const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+    const idIndex = cartData.findIndex((obj) => obj.id == id);
+    if (idIndex !== -1) {
+      cartData[idIndex].qty--;
+      localStorage.setItem("cart", JSON.stringify(cartData));
+    }
+  };
+
+   const Quantity = (id) => {
+    const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+    const idIndex = cartData.findIndex((obj) => obj.id == id);
+    if (idIndex !== -1) {
+        // cartData.splice(idIndex,1,...cartData[idIndex])
+        cartData[idIndex].qty++;
+        // cartData[idIndex].price = (parseInt(cartData[idIndex].price) * parseInt(cartData[idIndex].qty))
+        // console.log(cartData[idIndex].price)
+
+      localStorage.setItem("cart", JSON.stringify(cartData));
+    }
+  }
+
+
   const orderdetails = ()=>{
     const carts = JSON.parse(localStorage.getItem('cart'))
     const userOrderDetails= {
@@ -49,7 +84,10 @@ const CheckOut = () => {
   }
   return (
     <>
-    <Appbar
+     <Appbar
+        QuantityLess={QuantityLess}
+        Quantity={Quantity}
+        deleteCart={deleteCart}
         storageData={storageData}
         cartLenght={cartLenght}
       />
