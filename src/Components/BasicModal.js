@@ -19,9 +19,7 @@ const style = {
 };
 
 export default function BasicModal({handleClose,open , productDetails}) {
-  // const [open, setOpen] = React.useState(true);
-  // const handleOpen = () => setOpen(true);
-//   const handleClose = () => setOpen(false);
+
   return (
     <div>
       <Modal

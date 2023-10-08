@@ -5,6 +5,7 @@ import { AiOutlineMail ,AiOutlineUser} from "react-icons/ai";
 import { RiLockPasswordFill } from "react-icons/ri";
 import {BsFillTelephoneFill, BsUiChecksGrid} from "react-icons/bs"
 import { useNavigate } from "react-router-dom"
+import axios from "axios";
 
 const SignUp = () => {
     const[name,setName] = useState("")
@@ -24,9 +25,26 @@ const SignUp = () => {
       password
     }
     const userSignUp = ()=>{
-        
+
 
       console.log(userSignUpData)
+      axios({
+        method: 'post',
+        url: 'http://localhost:3000/api/user/',
+        data: {
+          ...userSignUpData
+        }
+      }).then(res => {
+        console.log(res.data.message)
+        console.log("token--->",res.data.token)
+        // localStorage.setItem("token",JSON.stringify(res.data.token))
+        navigate("/")
+        // console.log()
+      })
+      .catch(err => console.log(err))
+        
+      
+          
       setName("")
       setPhone("")
       setEmail("")
@@ -36,7 +54,7 @@ const SignUp = () => {
     <>
       <Appbar />
       <div>
-        <h1 className="fw-bold text-center login mt-3 my-5">Sign Up</h1>
+        <h1 className="fw-bold text-center login ">Sign Up</h1>
       </div>
       <div className="container">
         <div className="row ">
@@ -96,7 +114,7 @@ const SignUp = () => {
             </div>
               <div className="d-flex text-center justify-content-center mt-1 login-text flex-wrap">
 
-              <div className="text-center mt-1">Already Have an Account ? </div> <div className="fw-bold px-1 fs-5"><button className="signup-btn" onClick={()=>login()} >Login</button></div>
+              <div className="text-center mt-1">Already Have an Account ? </div> <div className="fw-bold px-1 fs-5 signup-login-btn"><button className="signup-btn" onClick={()=>login()} >Login</button></div>
               </div>
             </div>
     

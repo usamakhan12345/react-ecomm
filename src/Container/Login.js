@@ -5,6 +5,7 @@ import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from 'axios'
 
 const Login = () => {
   const[email,setEmail] = useState("")
@@ -19,8 +20,22 @@ const Login = () => {
     password
   }
   const userLogin = ()=>{
-
     console.log(userLoginData)
+    axios({
+      method: 'post',
+      url: 'http://localhost:3000/api/user/login',
+      data: {
+        ...userLoginData
+      }
+    }).then(res => {
+      console.log(res.data.message)
+      console.log("token--->",res.data.token)
+      // localStorage.setItem("token",JSON.stringify(res.data.token))
+      navigate("/")
+      // console.log()
+    })
+    .catch(err => console.log(err))
+
     setEmail("")
     setPassword("")
   }

@@ -19,7 +19,6 @@ const Dropdown = () => {
         <option value="women's clothing">Women's clothing</option>
 
         </select>
-        {/* <button id='search-btn'>Search</button> */}
         </div>
         </div>
     </div>

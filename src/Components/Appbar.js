@@ -44,17 +44,7 @@ const Check = (item)=>{
   }
 }
   
-//  React.useEffect(()=>{
-//   const CartLenth = ()=>{
-//     const carts = JSON.parse(localStorage.getItem('cart'))
-//     if(carts){
 
-//       setCartLenght(carts.length)
-//     }
-//   }
-//   CartLenth()
-//  })
-//  console.log(cartLenght)
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
@@ -91,7 +81,7 @@ const Check = (item)=>{
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar component="nav" style={{backgroundColor : "#EC407A"}}>
+      <AppBar component="nav" style={{backgroundColor : "#429467"}}>
         <Toolbar>
           <IconButton
             color="inherit"

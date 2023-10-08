@@ -15,6 +15,9 @@ const CheckOut = () => {
  const [cartLenght,setcartLenght] = useState(0)
 
 
+
+
+
   useEffect(()=>{
     const carts = JSON.parse(localStorage.getItem('cart'))
     setstorageData(carts)
@@ -47,10 +50,8 @@ const CheckOut = () => {
     const cartData = JSON.parse(localStorage.getItem("cart")) || [];
     const idIndex = cartData.findIndex((obj) => obj.id == id);
     if (idIndex !== -1) {
-        // cartData.splice(idIndex,1,...cartData[idIndex])
         cartData[idIndex].qty++;
-        // cartData[idIndex].price = (parseInt(cartData[idIndex].price) * parseInt(cartData[idIndex].qty))
-        // console.log(cartData[idIndex].price)
+    
 
       localStorage.setItem("cart", JSON.stringify(cartData));
     }
@@ -58,7 +59,8 @@ const CheckOut = () => {
 
 
   const orderdetails = ()=>{
-    const carts = JSON.parse(localStorage.getItem('cart'))
+    
+  const carts = JSON.parse(localStorage.getItem('cart'))
     const userOrderDetails= {
     name,
     email,
@@ -66,19 +68,18 @@ const CheckOut = () => {
     amount,
     carts
   }
-  axios.post('http://localhost:8000/placeorder',{
-    userOrderDetails
+  console.log(userOrderDetails)
+  axios({
+    method: 'post',
+    url: 'http://localhost:3000/api/order/',
+    data: {
+      ...userOrderDetails
+    }
+  }).then(res => {
+    console.log(res.data.message)
   })
-  .then((res) => {
-    console.log(res.data)
-    setName("")
-    setEmail("")
-    setPhone("")
-    setAmount("")
-    localStorage.clear()
-  })
-
   .catch(err => console.log(err))
+
 
  
   }

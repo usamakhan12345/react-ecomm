@@ -11,15 +11,7 @@ import BasicModal from './BasicModal';
 
 export default function MultiActionAreaCard({data , AddtoCart , viewDetails}) {
   const[productDetails, setProductDetails] = React.useState({})
-  // const viewDetails = (id)=>{
-  //   console.log(id)
-  //   setopen(true)
-  //   setopen(true)
-  //   axios(`https://fakestoreapi.com/products/${id}`)
-  //   .then(res => setProductDetails(res.data))
-  //   .catch(err => console.log(err))
-  //    }
-  // console.log("data--->",data)
+
   return (
     <>
     <Card sx={{ width: 250, marginTop: 4 , height : 400 }}>
