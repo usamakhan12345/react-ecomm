@@ -13,7 +13,7 @@ import { useContext } from "react";
 import { Category } from "../Context";
 import TemporaryDrawer from "../Components/Drawer";
 
- const Home = () => {
+const Home = () => {
   const [data, setdata] = useState([]);
   const [page, setPage] = useState(1);
   const [datalimit, setDataLimit] = useState(8);
@@ -25,7 +25,7 @@ import TemporaryDrawer from "../Components/Drawer";
   const [cartLenght, setCartLenght] = useState();
   const [storageData, setStorageData] = useState([]);
 
-    const  QuantityLess = (id) => {
+  const QuantityLess = (id) => {
     const cartData = JSON.parse(localStorage.getItem("cart")) || [];
     const idIndex = cartData.findIndex((obj) => obj.id == id);
     if (idIndex !== -1) {
@@ -34,14 +34,14 @@ import TemporaryDrawer from "../Components/Drawer";
     }
   };
 
-   const Quantity = (id) => {
+  const Quantity = (id) => {
     const cartData = JSON.parse(localStorage.getItem("cart")) || [];
     const idIndex = cartData.findIndex((obj) => obj.id == id);
     if (idIndex !== -1) {
-        // cartData.splice(idIndex,1,...cartData[idIndex])
-        cartData[idIndex].qty++;
-        // cartData[idIndex].price = (parseInt(cartData[idIndex].price) * parseInt(cartData[idIndex].qty))
-        // console.log(cartData[idIndex].price)
+      // cartData.splice(idIndex,1,...cartData[idIndex])
+      cartData[idIndex].qty++;
+      // cartData[idIndex].price = (parseInt(cartData[idIndex].price) * parseInt(cartData[idIndex].qty))
+      // console.log(cartData[idIndex].price)
 
       localStorage.setItem("cart", JSON.stringify(cartData));
     }
@@ -129,7 +129,7 @@ import TemporaryDrawer from "../Components/Drawer";
         storageData={storageData}
         cartLenght={cartLenght}
       />
-      <TemporaryDrawer/>
+      <TemporaryDrawer />
       <Dropdown />
       <BasicModal
         productDetails={productDetails}

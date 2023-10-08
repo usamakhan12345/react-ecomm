@@ -6,6 +6,8 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import {BsFillTelephoneFill, BsUiChecksGrid} from "react-icons/bs"
 import { useNavigate } from "react-router-dom"
 import axios from "axios";
+import Swal from 'sweetalert2'
+
 
 const SignUp = () => {
     const[name,setName] = useState("")
@@ -37,11 +39,26 @@ const SignUp = () => {
       }).then(res => {
         console.log(res.data.message)
         console.log("token--->",res.data.token)
-        // localStorage.setItem("token",JSON.stringify(res.data.token))
+        Swal.fire({
+          title: 'User Register Successfuly',
+          text: res.data.message,
+          icon: 'success',
+         
+          confirmButtonText: 'ok'
+        })
+        localStorage.setItem("token",JSON.stringify(res.data.token))
         navigate("/")
         // console.log()
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err)
+        Swal.fire({
+          title: 'User',
+          text: err.response.data.message.details[0].message,
+          icon: 'error',
+          confirmButtonText: 'ok'
+        })
+      })
         
       
           

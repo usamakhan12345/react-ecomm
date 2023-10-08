@@ -6,6 +6,7 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 const Login = () => {
   const[email,setEmail] = useState("")
@@ -29,12 +30,26 @@ const Login = () => {
       }
     }).then(res => {
       console.log(res.data.message)
-      console.log("token--->",res.data.token)
-      // localStorage.setItem("token",JSON.stringify(res.data.token))
+      console.log("token--->",res.data.token);
+      Swal.fire({
+        title: 'User Login Successfuly',
+        text: res.data.message,
+        icon: 'success',
+        confirmButtonText: 'ok'
+      })
+      localStorage.setItem("token",JSON.stringify(res.data.token))
       navigate("/")
       // console.log()
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      console.log(err)
+      Swal.fire({
+        title: 'Error!',
+        text: err.response.data.message,
+        icon: 'error',
+        confirmButtonText: 'ok'
+      })
+    })
 
     setEmail("")
     setPassword("")
