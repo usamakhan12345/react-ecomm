@@ -15,7 +15,7 @@ const style = {
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
-  border: "2px solid #EC407A",
+  border: "2px solid #906090",
 };
 
 export default function BasicModal({ handleClose, open, productDetails }) {

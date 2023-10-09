@@ -92,8 +92,8 @@ const Login = () => {
             <div className="col-12 d-flex justify-content-center align-items-center mt-3">
               <button className="login-btn" onClick={()=>userLogin()}>Login</button>
             </div>
+                <div className="text-center"><button className="forget-pass ">Forget Password ?</button></div>
               <div className="d-flex text-center justify-content-center mt-1 login-text flex-wrap">
-
               <div className="text-center mt-1">Don't Have an Account ? </div> <div className="fw-bold px-1 fs-5"><button className="signup-btn" onClick={()=>signUp()}>signUp</button></div>
               </div>
             </div>

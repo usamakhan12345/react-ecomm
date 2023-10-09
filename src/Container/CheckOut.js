@@ -13,6 +13,7 @@ const CheckOut = () => {
   const [amount, setAmount] = useState(0)
  const [storageData,setstorageData] = useState([])
  const [cartLenght,setcartLenght] = useState(0)
+ const[token,setToken] = useState("")
 
 
 
@@ -24,8 +25,33 @@ const CheckOut = () => {
     setcartLenght(carts.length)
     const totalAMount = JSON.parse(localStorage.getItem('totalamount'))
    setAmount(totalAMount) 
+   const token = localStorage.getItem('token').toString()
+   console.log(typeof token)
+   const headers = {
+    'Authorization': `Bearer ${token}`, // Replace 'your_jwt_token' with your actual JWT token
+    'Content-Type': 'application/json' // Set content type to JSON
+  };
+  axios({
+    method: 'post',
+    url: 'http://localhost:3000/api/user/userdetails',
+    headers: headers,
+    data: {
+    }
+  }).then(res => {
+    console.log(res)
+    // console.log("token--->",res.data.token);
+
+
+    // console.log()
+  })
+    .catch(err => {
+      console.log(err)
 
   })
+
+
+
+  },[])
       
   const deleteCart = (id) => {
     const cartData = JSON.parse(localStorage.getItem("cart")) || [];

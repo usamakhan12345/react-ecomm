@@ -1,14 +1,14 @@
 .cart-btn{
-    background-color: #EC407A!important;
+    background-color: #906090!important;
     color: #fff !important;
     font-weight: bold !important;
     padding: 4px 15px !important;
     font-size: 10px !important;
 }
 .details-btn{
-    border: 1px solid #EC407A !important;
+    border: 1px solid #906090 !important;
     box-sizing: border-box;
-    color: #EC407A !important;
+    color: #906090!important;
     font-weight: bold !important;
     padding: 4px 15px !important;
 
@@ -23,14 +23,14 @@
     padding: 0px;
 }
 .but-now-btn{
-    background-color: #EC407A!important;
+    background-color: #906090!important;
     color: #fff !important;
     font-weight: bold !important;
     padding: 6px 35px !important;
     font-size: 20px !important;
 }
 #select-label{
-    color: #EC407A !important;
+    color: #906090!important;
     margin-right: 20px;
     font-size: 22px;
     font-weight: bold;
@@ -40,13 +40,13 @@
     bottom: 1px !important;
 }
 #search-btn{
-    background-color: #EC407A!important;
+    background-color: #906090!important;
     color: #fff !important;
     font-weight: bold !important;
     padding: 6px 5px !important;
     font-size: 15px !important;
     margin-left: 20px;
-    border: #EC407A;
+    border: #906090;
     border-radius: 10%;
     width: 120px;
     height: 40px;
@@ -54,7 +54,7 @@
 .dropdown{
     width: 320px;
     height: 35px;
-    border: 2px solid #EC407A;
+    border: 2px solid #906090;
     color: black;
     font-weight: bold;
     /* background-color: #e9cfd7; */

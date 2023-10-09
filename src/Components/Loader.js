@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 export default function CircularIndeterminate({display}) {
   return (
     <Box sx={{ display: display , color:"success" , position : 'absolute' , top : '50%' ,margin : 'auto' ,left : '50%'}}>
-      <CircularProgress style={{color:"#EC407A"}} /> 
+      <CircularProgress style={{color:"#906090"}} /> 
     </Box>
   );
 }
