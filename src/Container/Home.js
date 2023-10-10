@@ -38,10 +38,7 @@ const Home = () => {
     const cartData = JSON.parse(localStorage.getItem("cart")) || [];
     const idIndex = cartData.findIndex((obj) => obj.id == id);
     if (idIndex !== -1) {
-      // cartData.splice(idIndex,1,...cartData[idIndex])
       cartData[idIndex].qty++;
-      // cartData[idIndex].price = (parseInt(cartData[idIndex].price) * parseInt(cartData[idIndex].qty))
-      // console.log(cartData[idIndex].price)
 
       localStorage.setItem("cart", JSON.stringify(cartData));
     }
@@ -61,7 +58,6 @@ const Home = () => {
         axios(`https://fakestoreapi.com/products?limit=${datalimit}`)
           .then((res) => {
             setdata(res.data);
-            // <CircularIndeterminate display={loaderDisplay}/>
             setLoaderDisplay("none");
             setPagination(true);
           })
@@ -162,11 +158,11 @@ const Home = () => {
       </div>
       {pagination ? (
         <div className="justify-content-center margin-auto">
-          <Stack spacing={2} style={{ color: "#EC407A" }}>
+          <Stack spacing={2} style={{ color: "#906090 " }}>
             <Typography>Page: {page}</Typography>
             <Pagination
               className="text-light"
-              style={{ backgroundColor: "#EC407A" }}
+              style={{ backgroundColor: "#906090 " }}
               count={8}
               page={page}
               onChange={handleChange}

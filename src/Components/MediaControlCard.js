@@ -43,9 +43,7 @@ export default function MediaControlCard({ productDetails }) {
             {productDetails.title}
           </Typography>
           <Typography
-          // variant="subtitle1"
-          // color="text.secondary"
-          // component="div"
+       
           >
             {productDetails.description}
             <div className="mt-1 my-2">

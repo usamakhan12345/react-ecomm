@@ -46,9 +46,8 @@ const SignUp = () => {
          
           confirmButtonText: 'ok'
         })
-        localStorage.setItem("token",JSON.stringify(res.data.token))
-        navigate("/")
-        // console.log()
+        // localStorage.setItem("token",JSON.stringify(res.data.token))
+        navigate("/login")
       })
       .catch(err => {
         console.log(err)

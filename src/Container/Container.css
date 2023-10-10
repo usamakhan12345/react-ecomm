@@ -10,12 +10,22 @@
     color: white;
     font-weight: bold;
     font-size: 20px;
-    
+    margin-bottom: 20px;
  width: 90% !important;
     align-items: center !important;
     margin: auto !important;
     margin-top: 20px !important;
 
+}
+.address-filed{
+  width: 92% !important;
+  justify-content: space-evenly !important  ;
+  margin: auto !important;
+  margin-top: 20px !important;
+  flex-wrap: wrap !important;
+
+  /* align-items: center; */
+  
 }
 .place-order-btn:hover{
     background-color: #906090 !important;
@@ -28,12 +38,14 @@
     .text-field{
 
         width: 100% !important;
-        margin-bottom: 20px !important;
+        margin-bottom: 10px !important;
     }
   }
   .main-head{
     text-align: center;
     font-size: 40px;
+    margin-top: 20px !important;
+    color: #906090;
   }
   .text-field{
     border: 4px solid #906090 !important;

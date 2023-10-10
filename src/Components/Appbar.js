@@ -19,8 +19,7 @@ import { BiCartAdd } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import Badge from "@mui/material/Badge";
 import { useEffect } from "react";
-import Swal from 'sweetalert2'
-
+import Swal from "sweetalert2";
 
 import TemporaryDrawer from "./Drawer";
 
@@ -49,7 +48,6 @@ function DrawerAppBar(props) {
       </Badge>{" "}
     </>,
   ];
-  // console.log(token)
   if (!token) {
     navItems.length = 3;
   }
@@ -70,12 +68,13 @@ function DrawerAppBar(props) {
     if (item === "LOGOUT") {
       localStorage.removeItem("token");
       Swal.fire({
-        title: 'User',
-        text: 'User logout Successfuly',
-        icon: 'success',
-        confirmButtonText: 'ok'
-      })
-      setToken("")
+        title: "User",
+        text: "User logout Successfuly",
+        icon: "success",
+        confirmButtonText: "ok",
+      });
+      navigate("/")
+      setToken("");
       navItems[2] = "login";
     }
   };
@@ -150,10 +149,6 @@ function DrawerAppBar(props) {
               </Button>
             ))}
           </Box>
-          {/* <Box>
-            <span className='fs-3' style={{marginLeft :15 , color:'blue',cursor:'pointer',fontWeight:'bold'}}>{"cartLenght"}</span>
-           <BiCartAdd style={{cursor: 'pointer'}} onClick={()=> navigate("/cart")} className='fs-1'/> 
-          </Box>  */}
         </Toolbar>
       </AppBar>
       <TemporaryDrawer
