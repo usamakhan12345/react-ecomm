@@ -53,7 +53,7 @@ const SignUp = () => {
         console.log(err)
         Swal.fire({
           title: 'User',
-          text: err.response.data.message.details[0].message,
+          text: err,
           icon: 'error',
           confirmButtonText: 'ok'
         })

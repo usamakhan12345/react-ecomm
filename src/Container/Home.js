@@ -158,11 +158,11 @@ const Home = () => {
       </div>
       {pagination ? (
         <div className="justify-content-center margin-auto">
-          <Stack spacing={2} style={{ color: "#906090 " }}>
+          <Stack spacing={2} style={{ color: "#e63946" }}>
             <Typography>Page: {page}</Typography>
             <Pagination
               className="text-light"
-              style={{ backgroundColor: "#906090 " }}
+              style={{ backgroundColor: "#e63946" }}
               count={8}
               page={page}
               onChange={handleChange}

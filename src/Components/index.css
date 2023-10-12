@@ -1,60 +1,56 @@
 .cart-btn{
-    background-color: #906090!important;
+    background-color: #e63946!important;
     color: #fff !important;
     font-weight: bold !important;
     padding: 4px 15px !important;
     font-size: 10px !important;
+   
 }
 .details-btn{
-    border: 1px solid #906090 !important;
+    border: 1px solid #e63946 !important;
     box-sizing: border-box;
-    color: #906090!important;
+    color: #e63946!important;
     font-weight: bold !important;
     padding: 4px 15px !important;
-
     font-size: 10px !important; 
 
 }
-.btns-container{
-    position: absolute !important;
-}
+
 
 .media-control-card{
     padding: 0px;
 }
 .but-now-btn{
-    background-color: #906090!important;
+    background-color: #e63946!important;
     color: #fff !important;
+
     font-weight: bold !important;
     padding: 6px 35px !important;
     font-size: 20px !important;
 }
 #select-label{
-    color: #906090!important;
+    color: #e63946!important;
     margin-right: 20px;
     font-size: 22px;
     font-weight: bold;
 }
-.cart-btn{
-    position: relative !important;
-    bottom: 1px !important;
-}
+
 #search-btn{
-    background-color: #906090!important;
+    background-color: #e63946!important;
     color: #fff !important;
     font-weight: bold !important;
     padding: 6px 5px !important;
     font-size: 15px !important;
     margin-left: 20px;
-    border: #906090;
+    border: #e63946;
     border-radius: 10%;
     width: 120px;
     height: 40px;
 }
 .dropdown{
-    width: 320px;
+    width: 500px;
     height: 35px;
-    border: 2px solid #906090;
+    border: 2px solid #e63946;
     color: black;
     font-weight: bold;
     /* background-color: #e9cfd7; */
@@ -96,4 +92,78 @@
     padding: 10px 30px !important;
     margin: 40px !important;
     margin-top: 40px !important;
+}
+.drop-down-div{
+    height: 300px;
+    width: 100%;
+    /* background-image: url('https://media.istockphoto.com/id/1293366109/photo/this-one-match-perfect-with-me.webp?b=1&s=170667a&w=0&k=20&c=H5hgZid5Aji924X_NLc4t7zt1v5Qza_e33XI2VdgrlU=');
+    background-repeat: no-repeat;
+    background-size: 100% 100%; */
+    display: grid;
+    place-items: center;
+
+}
+.section-1{
+    height: 500px;
+    width: 100%;
+    background-image: url('https://media.istockphoto.com/id/1199014988/photo/shopping-woman.jpg?s=612x612&w=0&k=20&c=dK8XyJZ1oKjE-CqS_PmTtBMR-so4qMHaGaKUdimX1uE='); 
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.content-image{
+    height: 500px !important;
+    /* background-image: url('https://media.istockphoto.com/id/1369227756/photo/giggling-their-way-through-the-mall.webp?b=1&s=170667a&w=0&k=20&c=OiDwC_sSwTJrNU63Wy0yNZHpvK6JLZabE43HUQU-SOw=');
+    background-size: 100% 100%;
+    background-repeat: no-repeat; */
+
+}
+.content{
+    height: 100%;
+    /* width: 500px; */
+    /* display: grid; */
+    /* place-items: center; */
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+}
+.content-div{
+    margin-top: 110px !important;
+    box-shadow: 12px,2px,2px, #e63946;
+}
+.sale-ofer{
+    color: #e63946;
+    font-size: 40px;
+    border: #fff;
+
+}
+/* .content-div > h5{
+    color: blue;
+    font-weight: bold;
+    font-size: 30px;
+} */
+.main-head{
+    /* margin-top: 20px; */
+    /* color: #e63946 !important; */
+    color: whitesmoke !important;
+    text-align: center;
+    background-color: #e63946 !important;
+    width: 290px !important;
+    /* padding: 10px 10px; */
+    text-shadow: rgba(232, 151, 151, 0.931) 0px 5px 15px;
+    /* border: #fff; */
+    font-weight: bolder !important ;
+    margin: auto !important;
+
+
+    font-size: 40px !important;
+}
+.arrow-icon{
+    font-size: 50px;
+    color: #e63946;
+    font-weight: bold;
+
+}
+.logo{
+    font-family: 'Times New Roman', Times, serif;
 }

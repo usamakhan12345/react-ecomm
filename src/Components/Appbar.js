@@ -114,7 +114,7 @@ function DrawerAppBar(props) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar component="nav" style={{ backgroundColor: "#906090" }}>
+      <AppBar component="nav" style={{ backgroundColor: "#e63946" }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -134,7 +134,7 @@ function DrawerAppBar(props) {
               <div className="fs-1 px-2">
                 <FiShoppingCart />
               </div>
-              <div className="mt-3">SMIT STORE</div>
+              <div className="mt-3 fw-bold logo">SMIT STORE</div>
             </div>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
@@ -161,7 +161,7 @@ function DrawerAppBar(props) {
       />
       <nav>
         <Drawer
-          style={{ color: "#e3821e", backgroundColor: "#EC407A" }}
+          style={{ color: "#e3821e", backgroundColor: "#e63946" }}
           container={container}
           variant="temporary"
           open={mobileOpen}
@@ -170,12 +170,12 @@ function DrawerAppBar(props) {
             keepMounted: true,
           }}
           sx={{
-            display: { xs: "block", sm: "none", color: "#EC407A" },
+            display: { xs: "block", sm: "none", color: "#e63946"  },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
               color: "#ffff",
-              backgroundColor: "#EC407A",
+              backgroundColor: "#e63946" ,
               fontWeight: "bold",
               fontSize: "30px",
             },

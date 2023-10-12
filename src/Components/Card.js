@@ -22,7 +22,7 @@ export default function MultiActionAreaCard({ data, AddtoCart, viewDetails }) {
 
   return (
     <>
-      <Card sx={{ width: 250, marginTop: 4, height: 400 }}>
+      <Card  sx={{ width: 250, marginTop: 4, height: 400 }}>
         <div>
           <img
             style={{ width: "100%", height: 180, objectFit: "contain" }}
@@ -45,14 +45,16 @@ export default function MultiActionAreaCard({ data, AddtoCart, viewDetails }) {
             color2={"#ffd700"}
           />
         </CardContent>
-        <CardActions className="d-flex justify-content-between btns-container">
+        <div className="position-relative  bg-primary  ">
+
+        <CardActions className=" d-flex position-absolute   justify-content-between ">
           <Button
             disabled={checkLogin}
             onClick={() => AddtoCart(data)}
             size="small"
             color="primary"
-            className="cart-btn"
-          >
+            className="cart-btn "
+            >
             Add to Cart
           </Button>
           <Button
@@ -60,10 +62,11 @@ export default function MultiActionAreaCard({ data, AddtoCart, viewDetails }) {
             size="small"
             color="primary"
             className="details-btn"
-          >
+            >
             View Details
           </Button>
         </CardActions>
+            </div>
       </Card>
     </>
   );
