@@ -12,7 +12,8 @@ import Dropdown from "../Components/Dropdown";
 import { useContext } from "react";
 import { Category } from "../Context";
 import TemporaryDrawer from "../Components/Drawer";
-
+import "./Container.css";
+ 
 const Home = () => {
   const [data, setdata] = useState([]);
   const [page, setPage] = useState(1);
@@ -157,7 +158,7 @@ const Home = () => {
         ))}
       </div>
       {pagination ? (
-        <div className="justify-content-center margin-auto">
+        <div className="justify-content-center position-relative pagination ">
           <Stack spacing={2} style={{ color: "#e63946" }}>
             <Typography>Page: {page}</Typography>
             <Pagination

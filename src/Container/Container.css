@@ -129,3 +129,16 @@
 #iconColor{
   color: pink;
 } 
+.pagination{
+  margin-top: 80px !important;
+}
+
+@media screen and (max-width: 400px) {
+  .login-icon{
+      font-size: 25px;
+   padding: 2px 10px; 
+   align-items: left;
+   align-content: left;
+
+    }
+}

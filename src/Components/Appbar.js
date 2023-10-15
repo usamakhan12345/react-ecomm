@@ -87,7 +87,7 @@ function DrawerAppBar(props) {
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <FiShoppingCart />
 
-      <Typography variant="h6" sx={{ my: 2 }}>
+      <Typography className="fs-2" variant="h6" sx={{ }}>
         Smit Store
       </Typography>
       <Divider />

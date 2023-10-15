@@ -22,8 +22,10 @@ const Login = () => {
   }
   const userLogin = ()=>{
     console.log(userLoginData)
-    axios({
-      method: 'post',
+    if(userLoginData){
+      
+      axios({
+        method: 'post',
       url: 'http://localhost:3000/api/user/login',
       data: {
         ...userLoginData
@@ -50,9 +52,10 @@ const Login = () => {
         confirmButtonText: 'ok'
       })
     })
-
+    
     setEmail("")
     setPassword("")
+  }
   }
   return (
     <>

@@ -22,7 +22,7 @@ export default function MultiActionAreaCard({ data, AddtoCart, viewDetails }) {
 
   return (
     <>
-      <Card  sx={{ width: 250, marginTop: 4, height: 400 }}>
+      <Card className="card-content" sx={{ width: 250, marginTop: 4, height: 400 }}>
         <div>
           <img
             style={{ width: "100%", height: 180, objectFit: "contain" }}

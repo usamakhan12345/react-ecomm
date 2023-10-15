@@ -105,6 +105,8 @@
 }
 .section-1{
     height: 500px;
+    position: absolute !important;
+    top: 10px;
     width: 100%;
     background-image: url('https://media.istockphoto.com/id/1199014988/photo/shopping-woman.jpg?s=612x612&w=0&k=20&c=dK8XyJZ1oKjE-CqS_PmTtBMR-so4qMHaGaKUdimX1uE='); 
     background-repeat: no-repeat;
@@ -130,6 +132,8 @@
 .content-div{
     margin-top: 110px !important;
     box-shadow: 12px,2px,2px, #e63946;
+    position: relative !important;
+    right: 40px !important;
 }
 .sale-ofer{
     color: #e63946;
@@ -154,16 +158,55 @@
     /* border: #fff; */
     font-weight: bolder !important ;
     margin: auto !important;
+    font-family: 'Times New Roman', Times, serif;
 
 
     font-size: 40px !important;
 }
+.sales-off{
+       color: whitesmoke !important;
+       text-align: center;
+       /* padding: 10px 10px; */
+       text-shadow: rgba(232, 151, 151, 0.931) 0px 5px 15px;
+       /* border: #fff; */
+       font-weight: bolder !important ;
+       /* margin: auto !important; */
+       font-family: 'Times New Roman', Times, serif;
+   
+   
+       font-size: 40px !important; 
+}
 .arrow-icon{
     font-size: 50px;
-    color: #e63946;
-    font-weight: bold;
+    color: #e63946 !important;
+    /* background-color: #e63946; */
+    margin-top: 2px !important;
+    margin: 3px !important;
+    font-weight: 900;
 
 }
 .logo{
     font-family: 'Times New Roman', Times, serif;
+}
+.card-content{
+    position: relative !important;
+    top: 80px;
+    margin-bottom: 20px;
+
+}
+@media screen and (max-width: 450px) {
+.section-1{
+    background-image: url('https://media.istockphoto.com/id/696526278/photo/saleswoman-suggesting-dress-to-a-customer.webp?b=1&s=170667a&w=0&k=20&c=FN1k2t3f06iPaPNx843P0fPQ4sOynBDadLUSO5_RN5U='); 
+    background-size:cover;
+}
+.sale-ofer{
+    color: #fff;
+    text-align: center !important;
+}
+.arrow-icon{
+    display: none;
+}
+.main-head {
+    text-align: center !important;
+}
 }
