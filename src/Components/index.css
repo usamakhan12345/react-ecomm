@@ -212,11 +212,9 @@
 }
 
 .loader{
-    color: #e63946 !important;
+    color: whitesmoke !important;
     font-weight: bold !important; 
     outline-width: 30px !important;
-    background-color: wheat !important;
-    border-radius: 50%;
 
 
 }

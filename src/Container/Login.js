@@ -13,7 +13,6 @@ const Login = () => {
   const[password,setPassword] = useState("")
     const navigate = useNavigate()
   const signUp = ()=>{
-    console.log("first")
     navigate("/signup")
   }
   const userLoginData = {
@@ -21,7 +20,6 @@ const Login = () => {
     password
   }
   const userLogin = ()=>{
-    console.log(userLoginData)
     if(userLoginData){
       
       axios({
@@ -31,8 +29,7 @@ const Login = () => {
         ...userLoginData
       }
     }).then(res => {
-      console.log(res.data.message)
-      console.log("token--->",res.data.token);
+  
 
       Swal.fire({
         title: 'User Login Successfuly',
@@ -42,12 +39,11 @@ const Login = () => {
       })
       localStorage.setItem("token",JSON.stringify(res.data.token))
       localStorage.setItem("userid",JSON.stringify(res.data.id))
-
+      setEmail("")
+      setPassword("")
       navigate("/")
-      // console.log()
     })
     .catch(err => {
-      console.log(err)
       Swal.fire({
         title: 'Error!',
         text: err.response.data.message,

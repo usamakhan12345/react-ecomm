@@ -32,22 +32,7 @@ const CheckOut = () => {
 
     setAmount(totalAMount);
     const token = JSON.stringify(localStorage.getItem("token"));
-    // const headers = {
-    //   Authorization: `Bearer ${token}`,
-    //   "Content-Type": "application/json",
-    // };
-    // axios({
-    //   method: "post",
-    //   url: "http://localhost:3000/api/user/userdetails",
-    //   headers: headers,
-    //   data: {},
-    // })
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+   
   }, []);
 
   const deleteCart = (id) => {
@@ -93,7 +78,6 @@ const CheckOut = () => {
       customer
      
     };
-    console.log(userOrderDetails);
     axios({
       method: "post",
       url: "https://ruby-smiling-centipede.cyclic.cloud/api/order/",
@@ -102,7 +86,6 @@ const CheckOut = () => {
       },
     })
       .then((res) => {
-        console.log(res.data.message);
         Swal.fire({
           title: ' Successfuly Placed Order',
           text: res.data.message,
