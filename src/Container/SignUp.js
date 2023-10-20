@@ -3,7 +3,7 @@ import Appbar from "../Components/Appbar";
 import "./Container.css";
 import { AiOutlineMail ,AiOutlineUser} from "react-icons/ai";
 import { RiLockPasswordFill } from "react-icons/ri";
-import {BsFillTelephoneFill, BsUiChecksGrid} from "react-icons/bs"
+import {BsFillTelephoneFill} from "react-icons/bs"
 import { useNavigate } from "react-router-dom"
 import axios from "axios";
 import Swal from 'sweetalert2'
@@ -32,7 +32,7 @@ const SignUp = () => {
       console.log(userSignUpData)
       axios({
         method: 'post',
-        url: 'http://localhost:3000/api/user/',
+        url: 'https://ruby-smiling-centipede.cyclic.cloud/api/user/',
         data: {
           ...userSignUpData
         }
@@ -61,10 +61,10 @@ const SignUp = () => {
         
       
           
-      setName("")
-      setPhone("")
-      setEmail("")
-      setPassword("")
+      // setName("")
+      // setPhone("")
+      // setEmail("")
+      // setPassword("")
     }
   return (
     <>

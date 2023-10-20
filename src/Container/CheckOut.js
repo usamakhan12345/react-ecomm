@@ -29,25 +29,25 @@ const CheckOut = () => {
       setcartLenght(carts.length);
     }
     const totalAMount = JSON.parse(localStorage.getItem("totalamount"));
+
     setAmount(totalAMount);
-    const token = localStorage.getItem("token").toString();
-    console.log(typeof token);
-    const headers = {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    };
-    axios({
-      method: "post",
-      url: "http://localhost:3000/api/user/userdetails",
-      headers: headers,
-      data: {},
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const token = JSON.stringify(localStorage.getItem("token"));
+    // const headers = {
+    //   Authorization: `Bearer ${token}`,
+    //   "Content-Type": "application/json",
+    // };
+    // axios({
+    //   method: "post",
+    //   url: "http://localhost:3000/api/user/userdetails",
+    //   headers: headers,
+    //   data: {},
+    // })
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   }, []);
 
   const deleteCart = (id) => {
@@ -81,19 +81,22 @@ const CheckOut = () => {
 
   const orderdetails = () => {
     const carts = JSON.parse(localStorage.getItem("cart"));
+    const customer = JSON.parse(localStorage.getItem("userid"));
+
     const userOrderDetails = {
       name,
       email,
       phone,
       amount,
       address,
-
       carts,
+      customer
+     
     };
     console.log(userOrderDetails);
     axios({
       method: "post",
-      url: "http://localhost:3000/api/order/",
+      url: "https://ruby-smiling-centipede.cyclic.cloud/api/order/",
       data: {
         ...userOrderDetails,
       },

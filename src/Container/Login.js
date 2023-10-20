@@ -26,13 +26,14 @@ const Login = () => {
       
       axios({
         method: 'post',
-      url: 'http://localhost:3000/api/user/login',
+      url: 'https://ruby-smiling-centipede.cyclic.cloud/api/user/login',
       data: {
         ...userLoginData
       }
     }).then(res => {
       console.log(res.data.message)
       console.log("token--->",res.data.token);
+
       Swal.fire({
         title: 'User Login Successfuly',
         text: res.data.message,
@@ -40,6 +41,8 @@ const Login = () => {
         confirmButtonText: 'ok'
       })
       localStorage.setItem("token",JSON.stringify(res.data.token))
+      localStorage.setItem("userid",JSON.stringify(res.data.id))
+
       navigate("/")
       // console.log()
     })
