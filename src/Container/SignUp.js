@@ -14,6 +14,8 @@ const SignUp = () => {
     const[phone,setPhone] = useState("")
     const[email,setEmail] = useState("")
     const[password,setPassword] = useState("")
+    const[check,setCheck] = useState("")
+
 
     const navigate = useNavigate()
     const login = ()=>{
@@ -26,13 +28,15 @@ const SignUp = () => {
       email,
       password
     }
+    console.log(userSignUpData)
+
     const userSignUp = ()=>{
 
 
       console.log(userSignUpData)
       axios({
         method: 'post',
-        url: 'https://ruby-smiling-centipede.cyclic.cloud/api/user/',
+        url: 'https://handsome-pear-bikini.cyclic.app/api/user/',
         data: {
           ...userSignUpData
         }
@@ -40,7 +44,7 @@ const SignUp = () => {
         console.log(res.data.message)
         console.log("token--->",res.data.token)
         Swal.fire({
-          title: 'User Register Successfuly',
+          title: 'User Registered Successfuly',
           text: res.data.message,
           icon: 'success',
          
@@ -51,9 +55,16 @@ const SignUp = () => {
       })
       .catch(err => {
         console.log(err)
+        const errMesg = err.response.data.message
+        if(errMesg.includes("duplicate")){
+            setCheck("User Already Registered")
+            console.log("check")
+        }
+        console.log(check)
+
         Swal.fire({
-          title: 'User',
-          text: err,
+          title: 'User Not Registered',
+          text: check ? check : err.response.data.message ,
           icon: 'error',
           confirmButtonText: 'ok'
         })

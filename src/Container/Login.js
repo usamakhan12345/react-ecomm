@@ -24,13 +24,12 @@ const Login = () => {
       
       axios({
         method: 'post',
-      url: 'https://ruby-smiling-centipede.cyclic.cloud/api/user/login',
+      url: 'https://handsome-pear-bikini.cyclic.app/api/user/login',
       data: {
         ...userLoginData
       }
     }).then(res => {
   
-
       Swal.fire({
         title: 'User Login Successfuly',
         text: res.data.message,
@@ -42,8 +41,10 @@ const Login = () => {
       setEmail("")
       setPassword("")
       navigate("/")
-    })
+    })  
     .catch(err => {
+      console.log(err)
+        
       Swal.fire({
         title: 'Error!',
         text: err.response.data.message,
@@ -52,8 +53,7 @@ const Login = () => {
       })
     })
     
-    setEmail("")
-    setPassword("")
+
   }
   }
   return (

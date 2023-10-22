@@ -80,7 +80,7 @@ const CheckOut = () => {
     };
     axios({
       method: "post",
-      url: "https://ruby-smiling-centipede.cyclic.cloud/api/order/",
+      url: "https://handsome-pear-bikini.cyclic.app/api/order/",
       data: {
         ...userOrderDetails,
       },
